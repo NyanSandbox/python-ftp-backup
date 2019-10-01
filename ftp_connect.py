@@ -1,4 +1,4 @@
-from ftplib import FTP_TLS
+from ftplib import FTP
 
 
 class FTPConnect:
@@ -11,9 +11,8 @@ class FTPConnect:
         self.password = password
 
     def __enter__(self):
-        self.ftps = FTP_TLS(self.host)
+        self.ftps = FTP(self.host)
         self.ftps.login(self.username, self.password)
-        self.ftps.prot_p()
         return self.ftps
 
     def __exit__(self, exc_type, exc_val, exc_tb):
